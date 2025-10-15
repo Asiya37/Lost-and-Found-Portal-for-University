@@ -80,7 +80,7 @@ if (form) {
 
     // Redirect
     alert("Report submitted successfully!");
-    window.location.href = "index.html";
+    window.location.href = "home.html";
   });
 }
 
