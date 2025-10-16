@@ -1,6 +1,6 @@
 // Redirect if not logged in
 if (localStorage.getItem("isLoggedIn") !== "true") {
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 
@@ -80,7 +80,7 @@ if (form) {
 
     // Redirect
     alert("Report submitted successfully!");
-    window.location.href = "index.html";
+    window.location.href = "home.html";
   });
 }
 
@@ -89,6 +89,6 @@ document.addEventListener("DOMContentLoaded", displayItems);
 
 function logout() {
   localStorage.removeItem("isLoggedIn");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
