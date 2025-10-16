@@ -6,7 +6,8 @@ body {
   }
   
   header {
-    background: #2c3e50;
+    background: #051d36;
+    
     color: white;
     padding: 15px;
     text-align: center;
@@ -20,6 +21,12 @@ body {
   
   main {
     padding: 20px;
+  }
+
+  main h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .search-bar {
