@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Login | Lost & Found Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      /* background: linear-gradient(120deg, #007bff, #00c6ff); */
+      font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  
+  font-style: normal;
+   
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(img/bg2.jpg) no-repeat center center/cover; ;
+
+  opacity: 0.3;   /* fade effect */
+  z-index: -1;
+}
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 500px;
+      height: 400px;
+
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    .login-box p {
+      color: gray;
+      margin-bottom: 50px;
+    }
+
+    .username i {
+
+      
+    
+      
+      position: absolute;
+   left: 34.5%;
+      top: 44.5%;
+      transform: translateY(-50%);
+      color: #555;
+      font-size: 14px;
+    }
+  .password i{
+    position: absolute;
+   left: 34.5%;
+      top: 52.5%;
+      transform: translateY(-50%);
+      color: #555;
+      font-size: 14px;
+  }
+    input {
+      width: 80%;
+      padding: 10px;
+      padding: 10px 10px 10px 40px; /* space for icon */
+      margin: 8px 0;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 85%;
+      padding: 10px;
+      background: #007bff;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 10px;
+
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    p {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-box">
+    <h2>Welcome Back</h2>
+    <p>Enter your credentials to access your account</p>
+    <div class="username">
+      <i class="fa-solid fa-user"></i>
+      <input type="text" id="username" placeholder= "Username" required>
+      
+    </div>
+    <div class="password">
+      <i class="fa-solid fa-lock"></i>
+      <input type="password" id="password" placeholder="Password" required>
+    </div>
+  
+    <button id="loginBtn">Login</button>
+    <p id="error"></p>
+    <div class="forget">
+      Or <a href="#">Forget Password</a>
+    </div>
+  </div>
+
+
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const errorMsg = document.getElementById('error');
+
+    // Demo user credentials
+    const USER = { username: "admin", password: "12345" };
+
+    loginBtn.addEventListener('click', () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === USER.username && password === USER.password) {
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "home.html"; // go to home page
+      } else {
+        errorMsg.textContent = "Invalid username or password";
+      }
+    });
+  </script>
+</body>
+
+</html>
