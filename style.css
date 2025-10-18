@@ -133,8 +133,13 @@ nav a {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
   }
-  
+  .report-form label{
+    font-family: "Outfit", sans-serif;
+    
+  }
   .report-form input, .report-form textarea, .report-form select {
     padding: 10px;
     border-radius: 6px;
@@ -142,7 +147,7 @@ nav a {
   }
   
   .report-form button {
-    background: #2c3e50;
+    background: linear-gradient(90deg, #00264d, #5e17eb);
     color: white;
     border: none;
     padding: 10px;
@@ -151,6 +156,50 @@ nav a {
   }
   
   .report-form button:hover {
-    background: #1a242f;
+    background: #0056b3;
   }
+  
+  .delete-btn {
+    background-color: #ff4d4d; /* red tone */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    display: inline-block;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+  }
+  
+  .delete-btn:hover {
+    background-color: #e60000;
+   
+  }
+  
+  .delete-btn:active {
+    transform: scale(0.95);
+  }
+
+
+  button.edit-btn {
+    background-color: #3498db; /* Blue color */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+  }
+  
+  button.edit-btn:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+ 
+  }
+  
   
