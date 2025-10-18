@@ -135,12 +135,59 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   } else {
-    displayItems(); // --- for home page
+    // --- For homepage
+    displayItems();
+
+    // --- SEARCH FUNCTIONALITY
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+
+    if (searchInput && searchBtn) {
+      // Search button click
+      searchBtn.addEventListener("click", () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filtered = items.filter(
+          (item) =>
+            item.title.toLowerCase().includes(searchTerm) ||
+            item.type.toLowerCase().includes(searchTerm) ||
+            item.description.toLowerCase().includes(searchTerm) ||
+            item.location.toLowerCase().includes(searchTerm)
+        );
+        displayItems(filtered);
+      });
+
+      // Live search typing
+      searchInput.addEventListener("keyup", () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filtered = items.filter(
+          (item) =>
+            item.title.toLowerCase().includes(searchTerm) ||
+            item.type.toLowerCase().includes(searchTerm) ||
+            item.description.toLowerCase().includes(searchTerm) ||
+            item.location.toLowerCase().includes(searchTerm)
+        );
+        displayItems(filtered);
+      });
+    }
+
+    // --- USERNAME & LOGOUT
+    const usernameDisplay = document.getElementById("username");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const storedName = localStorage.getItem("username");
+
+    if (usernameDisplay && storedName) {
+      usernameDisplay.textContent = storedName;
+    }
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
   }
 });
 
 // --- Logout
 function logout() {
   localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("username");
   window.location.href = "index.html";
 }

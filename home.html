@@ -104,6 +104,23 @@
       font-weight: 500;
       margin-right: -30px;
     }
+    #logoutBtn {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 50px;
+  transition: background 0.3s ease;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+}
+
+#logoutBtn:hover {
+  background-color: #ff4d4d;
+}
 </style>
 <body>
   <header>
@@ -124,6 +141,7 @@
           
           </div>
           <span class="username">Username</span>
+          <button id="logoutBtn">Logout</button>
         </div>
       </nav>
 
@@ -140,8 +158,9 @@
 
   <main>
 
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search by title, type, or location...">
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search posts..." />
+      <button id="searchBtn" class="search-btn">Search</button>
     </div>
 
     <h2>All Lost & Found Items</h2>
