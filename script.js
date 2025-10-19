@@ -26,9 +26,13 @@ function displayItems(filteredItems = items) {
       <div class="item-info">
         <h3>${item.title}</h3>
         <p><strong>Type:</strong> ${item.type}</p>
-        <p>${item.description}</p>
+        <p><strong>Description:</strong>${item.description}</p>
         <p><strong>Location:</strong> ${item.location}</p>
+        <p><strong>Contact on:</strong> 
+          ${item.email ? `<a href="mailto:${item.email}">${item.email}</a>` : "No email provided"}
+        </p>
         <p><small>Reported on: ${item.date}</small></p>
+
         <div class="btn-group">
           <button class="edit-btn">Edit</button>
           <button class="delete-btn">Delete</button>
@@ -74,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("type").value = item.type;
       document.getElementById("description").value = item.description;
       document.getElementById("location").value = item.location;
+      document.getElementById("email").value = item.email || ""; // ✅ Pre-fill email if editing
 
       const submitBtn = form.querySelector("button[type='submit']");
       submitBtn.textContent = "Update Report";
@@ -86,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const type = document.getElementById("type").value;
       const description = document.getElementById("description").value.trim();
       const location = document.getElementById("location").value.trim();
+      const email = document.getElementById("email").value.trim(); // ✅ Collect email
       const fileInput = document.querySelector('input[type="file"]');
       const imageFile = fileInput.files[0];
 
@@ -111,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
           type,
           description,
           location,
+          email, // ✅ Save email here
           image: image || (editIndex !== null ? items[editIndex].image : ""),
           date: new Date().toLocaleString(),
         };
