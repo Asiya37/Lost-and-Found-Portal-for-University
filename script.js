@@ -1,7 +1,7 @@
 // --- Redirect if not logged in
-if (localStorage.getItem("isLoggedIn") !== "true") {
-  window.location.href = "index.html";
-}
+// if (localStorage.getItem("isLoggedIn") !== "true") {
+//   window.location.href = "index.html";
+// }
 
 // --- Initialize data
 let items = JSON.parse(localStorage.getItem("lostFoundItems")) || [];
@@ -198,3 +198,4 @@ function logout() {
   localStorage.removeItem("username");
   window.location.href = "index.html";
 }
+

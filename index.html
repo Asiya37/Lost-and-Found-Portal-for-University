@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +12,7 @@
   <title>Login | Lost & Found Portal</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      /* background: linear-gradient(120deg, #007bff, #00c6ff); */
       font-family: "Outfit", sans-serif;
-      font-optical-sizing: auto;
-
-      font-style: normal;
-
       display: flex;
       justify-content: center;
       align-items: center;
@@ -32,10 +25,7 @@
       position: absolute;
       inset: 0;
       background: url(img/bg2.jpg) no-repeat center center/cover;
-      ;
-
       opacity: 0.3;
-      /* fade effect */
       z-index: -1;
     }
 
@@ -43,50 +33,33 @@
       background: white;
       padding: 30px;
       border-radius: 10px;
-      width: 500px;
-      height: 400px;
-
+      width: 400px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       text-align: center;
     }
 
     .login-box h2 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       color: black;
     }
 
     .login-box p {
       color: gray;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
     }
 
-    .username i {
-
-
-
-
+    .username i, .password i {
       position: absolute;
-      left: 34.5%;
-      top: 44.5%;
-      transform: translateY(-50%);
       color: #555;
       font-size: 14px;
     }
 
-    .password i {
-      position: absolute;
-      left: 34.5%;
-      top: 52.5%;
-      transform: translateY(-50%);
-      color: #555;
-      font-size: 14px;
-    }
+    .username i { left: 35%; top: 44%; transform: translateY(-50%); }
+    .password i { left: 35%; top: 52%; transform: translateY(-50%); }
 
     input {
       width: 80%;
-      padding: 10px;
       padding: 10px 10px 10px 40px;
-      /* space for icon */
       margin: 8px 0;
       border-radius: 20px;
       border: 1px solid #ccc;
@@ -101,34 +74,30 @@
       border-radius: 20px;
       cursor: pointer;
       margin-top: 10px;
-
     }
 
     button:hover {
       background: #0056b3;
-      border: 1px solid  #fff;;
-      
+      border: 1px solid #fff;
     }
 
-    p {
+    p#error {
       color: red;
       font-size: 14px;
     }
   </style>
 </head>
-
 <body>
   <div class="login-box">
     <h2>Welcome Back</h2>
     <p>Enter your credentials to access your account</p>
     <div class="username">
       <i class="fa-solid fa-user"></i>
-      <input type="text" id="username" placeholder="Username" required>
-
+      <input type="text" id="userName" placeholder="Username" required>
     </div>
     <div class="password">
       <i class="fa-solid fa-lock"></i>
-      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="passWord" placeholder="Password" required>
     </div>
 
     <button id="loginBtn">Login</button>
@@ -138,26 +107,30 @@
     </div>
   </div>
 
-
   <script>
     const loginBtn = document.getElementById('loginBtn');
     const errorMsg = document.getElementById('error');
 
-    // Demo user credentials
-    const USER = { username: "admin", password: "12345" };
+    // --- Credentials ---
+    const admin = { username: "admin", password: "123456" };
+    const user = { username: "user", password: "12345" };
 
     loginBtn.addEventListener('click', () => {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+      const username = document.getElementById('userName').value.trim();
+      const password = document.getElementById('passWord').value.trim();
 
-      if (username === USER.username && password === USER.password) {
+      if (username === admin.username && password === admin.password) {
+        localStorage.setItem("isAdmin", "true");
         localStorage.setItem("isLoggedIn", "true");
-        window.location.href = "home.html"; // go to home page
+        window.location.href = "admin-dashboard.html"; // ✅ redirect to Admin Dashboard
+      } else if (username === user.username && password === user.password) {
+        localStorage.setItem("isAdmin", "false");
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "home.html"; // ✅ redirect to normal user home
       } else {
-        errorMsg.textContent = "Invalid username or password";
+        errorMsg.textContent = "Invalid username or password!";
       }
     });
   </script>
 </body>
-
 </html>
