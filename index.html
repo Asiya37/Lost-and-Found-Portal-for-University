@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" />
   <title>Login | Lost & Found Portal</title>
   <style>
     body {
@@ -48,14 +49,24 @@
       margin-bottom: 30px;
     }
 
-    .username i, .password i {
+    .username i,
+    .password i {
       position: absolute;
       color: #555;
       font-size: 14px;
     }
 
-    .username i { left: 35%; top: 44%; transform: translateY(-50%); }
-    .password i { left: 35%; top: 52%; transform: translateY(-50%); }
+    .username i {
+      left: 37.5%;
+      top: 47.5%;
+      transform: translateY(-50%);
+    }
+
+    .password i {
+      left: 37.5%;
+      top: 55.5%;
+      transform: translateY(-50%);
+    }
 
     input {
       width: 80%;
@@ -87,50 +98,28 @@
     }
   </style>
 </head>
+
 <body>
-  <div class="login-box">
-    <h2>Welcome Back</h2>
-    <p>Enter your credentials to access your account</p>
-    <div class="username">
-      <i class="fa-solid fa-user"></i>
-      <input type="text" id="userName" placeholder="Username" required>
+  <form action="login.php" method="POST">
+    <div class="login-box">
+      <h2>Welcome Back</h2>
+      <p>Enter your credentials to access your account</p>
+      <div class="username">
+        <i class="fa-solid fa-user"></i>
+        <input type="email" name="email" placeholder="Enter Email" required />
+      </div>
+      <div class="password">
+        <i class="fa-solid fa-lock"></i>
+        <input id="passWord" type="password" name="password" placeholder="Enter Password" required>
+
+      </div>
+
+      <button type="submit" name="login" id="loginBtn">Login</button>
+      <p id="error"></p>
+      <div class="forget">Or <a href="forgot.html">Forgot Password</a></div>
     </div>
-    <div class="password">
-      <i class="fa-solid fa-lock"></i>
-      <input type="password" id="passWord" placeholder="Password" required>
-    </div>
-
-    <button id="loginBtn">Login</button>
-    <p id="error"></p>
-    <div class="forget">
-      Or <a href="forgot.html">Forgot Password</a>
-    </div>
-  </div>
-
-  <script>
-    const loginBtn = document.getElementById('loginBtn');
-    const errorMsg = document.getElementById('error');
-
-    // --- Credentials ---
-    const admin = { username: "admin", password: "123456" };
-    const user = { username: "user", password: "12345" };
-
-    loginBtn.addEventListener('click', () => {
-      const username = document.getElementById('userName').value.trim();
-      const password = document.getElementById('passWord').value.trim();
-
-      if (username === admin.username && password === admin.password) {
-        localStorage.setItem("isAdmin", "true");
-        localStorage.setItem("isLoggedIn", "true");
-        window.location.href = "admin-dashboard.html"; // ✅ redirect to Admin Dashboard
-      } else if (username === user.username && password === user.password) {
-        localStorage.setItem("isAdmin", "false");
-        localStorage.setItem("isLoggedIn", "true");
-        window.location.href = "home.html"; // ✅ redirect to normal user home
-      } else {
-        errorMsg.textContent = "Invalid username or password!";
-      }
-    });
-  </script>
+  </form>
+  
 </body>
+
 </html>
