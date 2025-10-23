@@ -4,7 +4,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     if (!empty($name) && !empty($email) && !empty($message)) {
 
 

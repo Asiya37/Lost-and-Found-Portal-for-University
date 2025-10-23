@@ -11,6 +11,7 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
+<<<<<<< HEAD
 // --- Search functionality ---
 $search = $_GET['search'] ?? '';
 
@@ -32,6 +33,15 @@ if (!empty($search)) {
               WHERE reports.status='approved'
               ORDER BY reports.id DESC";
 }
+=======
+// --- Fetch all items ---
+$query = "SELECT reports.*, users.username 
+          FROM reports 
+          JOIN users ON reports.user_id = users.id
+          WHERE reports.status='approved'
+          ORDER BY reports.id DESC";
+
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
 
 $result = mysqli_query($conn, $query);
 ?>
@@ -43,9 +53,16 @@ $result = mysqli_query($conn, $query);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Items | Lost & Found Portal</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<<<<<<< HEAD
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+=======
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
   <style>
     /* ---------- General Styles ---------- */
     * {
@@ -53,13 +70,21 @@ $result = mysqli_query($conn, $query);
       padding: 0;
       box-sizing: border-box;
       font-family: 'Outfit', sans-serif;
+<<<<<<< HEAD
+=======
+      scroll-behavior: smooth;
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     }
 
     body {
       background: #f2f4f7;
     }
 
+<<<<<<< HEAD
     /* ---------- Navbar ---------- */
+=======
+    /* ---------- Navbar Styles ---------- */
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     nav {
       display: flex;
       justify-content: space-between;
@@ -94,6 +119,10 @@ $result = mysqli_query($conn, $query);
       position: relative;
       font-weight: 500;
       transition: 0.3s;
+<<<<<<< HEAD
+=======
+      padding-bottom: 5px;
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     }
 
     nav ul li a::after {
@@ -111,11 +140,19 @@ $result = mysqli_query($conn, $query);
       width: 100%;
     }
 
+<<<<<<< HEAD
     /* ---------- Container ---------- */
     .container {
       width: 90%;
       max-width: 1200px;
       margin: 120px auto 30px;
+=======
+    /* ---------- Container and Headings ---------- */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 120px auto 30px; /* space for fixed navbar */
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     }
 
     h1 {
@@ -124,6 +161,7 @@ $result = mysqli_query($conn, $query);
       color: #222;
     }
 
+<<<<<<< HEAD
     /* ---------- Search Bar ---------- */
     .search-form {
       display: flex;
@@ -163,6 +201,8 @@ $result = mysqli_query($conn, $query);
       background-color: #555;
     }
 
+=======
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     /* ---------- Items Grid ---------- */
     .items-grid {
       display: grid;
@@ -175,7 +215,12 @@ $result = mysqli_query($conn, $query);
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       padding: 20px;
+<<<<<<< HEAD
       transition: 0.3s ease;
+=======
+      transition: 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     }
 
     .item-card:hover {
@@ -188,6 +233,15 @@ $result = mysqli_query($conn, $query);
       height: 200px;
       object-fit: cover;
       border-radius: 10px;
+<<<<<<< HEAD
+=======
+      filter: brightness(95%);
+      transition: 0.3s;
+    }
+
+    .item-card img:hover {
+      filter: brightness(100%);
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     }
 
     .item-card h3 {
@@ -198,6 +252,10 @@ $result = mysqli_query($conn, $query);
     .item-card p {
       font-size: 14px;
       color: #555;
+<<<<<<< HEAD
+=======
+      margin-bottom: 20px ;
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     }
 
     /* ---------- Delete Button ---------- */
@@ -210,9 +268,15 @@ $result = mysqli_query($conn, $query);
       border-radius: 5px;
       cursor: pointer;
       font-size: 14px;
+<<<<<<< HEAD
       display: inline-block;
       margin-top: 10px;
       transition: 0.3s;
+=======
+  
+      transition: 0.3s;
+      margin-top: 20px ;
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     }
 
     .delete-btn:hover {
@@ -235,6 +299,7 @@ $result = mysqli_query($conn, $query);
   <div class="container">
     <h1>All Reported Items</h1>
 
+<<<<<<< HEAD
     <!-- 🔍 Search Bar -->
     <form method="GET" action="items.php" class="search-form">
       <input type="text" name="search" placeholder="Search by title, type, location, or username..." 
@@ -242,6 +307,8 @@ $result = mysqli_query($conn, $query);
       <button type="submit"><i class="fa fa-search"></i> Search</button>
     </form>
 
+=======
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
     <div class="items-grid">
       <?php if (mysqli_num_rows($result) > 0): ?>
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
@@ -259,8 +326,14 @@ $result = mysqli_query($conn, $query);
             <p><strong>Posted by:</strong> <?php echo htmlspecialchars($row['username']); ?></p>
 
             <a href="?delete=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this item?');">
+<<<<<<< HEAD
               <i class="fa fa-trash"></i> Delete
             </a>
+=======
+  <i class="fa fa-trash"></i> Delete
+</a>
+
+>>>>>>> 57c9e9ed2c8f34eb19ca2860a5a5eeed9fe9ef2b
           </div>
         <?php endwhile; ?>
       <?php else: ?>
