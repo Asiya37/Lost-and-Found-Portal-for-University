@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+  header("Location: index.html");
+  exit();
+}
+?>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -56,7 +64,7 @@ margin-top: -15px;
     
       letter-spacing: 1px;
       margin-left: -40px;
-      margin-right: 20px;
+      margin-right: 10px;
     }
 
     .menu {
@@ -216,9 +224,9 @@ font-size: 15px;
           <h2>🎓 University Lost & Found Portal </h2>
           <div class="menu">
             <a href="#home">Home</a>
-            <a href="report.html">Report Items</a>
-            <a href="items.html">All Items</a>
-            <a href="#itemsContainer"> Search Items</a>
+            <a href="report.php">Report Items</a>
+            <a href="items.php">All Items</a>
+            <a href="items.php"> Search Items</a>
             <a href="#footer">Contact Us</a>
            
           </div>
@@ -229,7 +237,9 @@ font-size: 15px;
             <i class="fa-solid fa-user-circle"></i>
           
           </div>
-          <span class="username">Username</span>
+          <span>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+
+
           <button id="logoutBtn">Logout</button>
         </div>
       </nav>
@@ -304,7 +314,7 @@ font-size: 15px;
       <!-- Right: Contact Form -->
       <div class="footer-right">
         <h3>Contact Us</h3>
-        <form id="contactForm">
+        <form id="contactForm" method="POST" action="contact.php">
           <input type="text" id="name" placeholder="Your Name" required>
           <input type="email" id="email" placeholder="Your Email" required>
           <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
